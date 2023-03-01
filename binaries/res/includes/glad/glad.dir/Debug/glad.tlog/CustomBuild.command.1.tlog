@@ -1,0 +1,10 @@
+^C:\USERS\ABDAS\ONEDRIVE\DESKTOP\BASICENGINE-ASSIGNMENT2 (2)\BASICENGINE-ASSIGNMENT2\RES\INCLUDES\GLAD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/abdas/OneDrive/Desktop/BasicEngine-Assignment2 (2)/BasicEngine-Assignment2" "-BC:/Users/abdas/OneDrive/Desktop/BasicEngine-Assignment2 (2)/BasicEngine-Assignment2/binaries" --check-stamp-file "C:/Users/abdas/OneDrive/Desktop/BasicEngine-Assignment2 (2)/BasicEngine-Assignment2/binaries/res/includes/glad/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

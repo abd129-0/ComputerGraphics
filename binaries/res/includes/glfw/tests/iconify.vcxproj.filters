@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\tests\iconify.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\deps\getopt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\deps\glad_gl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\deps\getopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\deps\glad\gl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\tests\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{099773F3-AB4D-3955-A073-AB82668D40DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3D9D7E1B-6378-36C2-896B-12A05BDF7DEE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,49 @@
+﻿  Building Custom Rule C:/Users/abdas/OneDrive/Desktop/BasicEngine-Assignment2 (2)/BasicEngine-Assignment2/CMakeLists.txt
+  Camera.cpp
+  IndexBuffer.cpp
+  Mesh.cpp
+  MeshConstructor.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\MeshConstructor.cpp(62,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\MeshConstructor.cpp(63,35): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\MeshConstructor.cpp(82,42): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\MeshConstructor.cpp(83,35): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  MovableGLM.cpp
+  VertexArray.cpp
+  VertexBuffer.cpp
+  assignment.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment.cpp(107,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment.cpp(108,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment.cpp(284,34): warning C4305: 'initializing': truncation from 'double' to 'float'
+  assignment_utilities.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment_utilities.cpp(80,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment_utilities.cpp(87,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment_utilities.cpp(93,34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\assignment_utilities.cpp(137,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  obj_loader.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(27,52): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(66,48): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(109,60): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(125,55): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(157,42): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(261,46): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(295,45): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(328,45): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\obj_loader.cpp(385,40): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  scene.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\scene.cpp(225,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\scene.cpp(226,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\scene.cpp(227,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\scene.cpp(228,10): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  shader.cpp
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\shader.cpp(95,31): warning C4267: '=': conversion from 'size_t' to 'GLint', possible loss of data
+  shape.cpp
+  texture.cpp
+  Generating Code...
+  stb_image.c
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(302,8): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(365,8): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(404,8): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(504,36): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(517,36): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\Engine3D\stb_image.c(4298,6): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Engine.vcxproj -> C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\binaries\Debug\Engine.lib

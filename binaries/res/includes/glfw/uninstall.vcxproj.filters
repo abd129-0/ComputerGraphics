@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\binaries\CMakeFiles\0f764e2902b14195e2bf19614920ee72\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\res\includes\glfw\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\abdas\OneDrive\Desktop\BasicEngine-Assignment2 (2)\BasicEngine-Assignment2\binaries\res\includes\glfw\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{210CC1F1-1FA0-37CE-B4D3-F945C3A1B722}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
