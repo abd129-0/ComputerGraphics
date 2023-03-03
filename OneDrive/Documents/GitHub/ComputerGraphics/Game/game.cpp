@@ -1,13 +1,7 @@
 #include "game.h"
-#include "GLFW/glfw3.h"
+#include "MyCube.h"
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
-#include <ratio>
-#include <thread>
-#define CLOCKWISE_ROTATE -1
-#define COUNTERCLOCKWISE_ROTATE 1
-
-
 
 static void printMat(const glm::mat4 mat)
 {
@@ -27,17 +21,57 @@ Game::Game() : Scene()
 Game::Game(float angle ,float relationWH, float near1, float far1) : Scene(angle,relationWH,near1,far1)
 { 	
 }
-void Game::Init()
+
+void Game::Init(Display* display)
 {
-	AddShader("../res/shaders/pickingShader");
+    this->display = display;
+    //Shaders
+	AddShader("../res/shaders/pickingShader");	
 	AddShader("../res/shaders/basicShader");
-    AddTexture("../res/textures/box0.bmp",false);
-    AddTexture("../res/textures/grass.bmp",false);
+
+	//Textures
+	AddTexture("../res/textures/plane.png",false);
+	AddTexture("../res/textures/grass.bmp",false);
+	AddTexture("../res/textures/bricks.jpg",false);
+
+    //MyCube Construction and Init
+    int indx =0 ;
+    for(int i=-1; i<=1; i++)
+    {
+        for(int j=-1; j<=1; j++)
+        {
+            for(int k=-1; k<=1; k++)
+            {
+	            AddShape(Cube,-1,TRIANGLES); //Add Cube to scene
+//                if(indx==26)
+//                {
+//                    SetShapeTex(indx, 1);
+//                }
+//                else if(indx==0)
+//                {
+//                    SetShapeTex(indx, 2);
+//                }
+//                else
+//                {
+                   SetShapeTex(indx, 0);
+//                }
+
+                shapes[indx]->MyScale(glm::vec3(0.5,0.5,0.5)); // Scale by 0.5
+                shapes[indx]->MyTranslate(glm::vec3(i,j,k),0); //Move to initial position
+                myCube.addCube(shapes[indx]);
+                myCube.updateUnitCube(indx, glm::vec3(i,j,k)); //Set Position
+                indx++;
+            }
+        }
+    }
+
 	pickedShape = 0;
-    MoveCamera(0,zTranslate,10);
+
+	MoveCamera(0,zTranslate,10);
+
 	pickedShape = -1;
+	
 	//ReadPixel(); //uncomment when you are reading from the z-buffer
-    bezierCurve = new Bezier1D(3, 91, 0, this);
 }
 
 void Game::Update(const glm::mat4 &MVP,const glm::mat4 &Model,const int  shaderIndx)
@@ -65,79 +99,11 @@ void Game::WhenTranslate()
 {
 }
 
-void Game::keyListener(int key) {
-    switch(key){
-        case GLFW_KEY_DOWN:
-            bezierCurve->moveSelectedControlPointDown();
-            break;
-        case GLFW_KEY_UP:
-            bezierCurve->moveSelectedControlPointUp();
-            break;
-        case GLFW_KEY_LEFT:
-            bezierCurve->selectPreviousControlPoint();
-            break;
-        case GLFW_KEY_RIGHT:
-            bezierCurve->selectNextControlPoint();
-            break;
-        case GLFW_KEY_SPACE:
-            bezierCurve->ToggleAnimation();
-            break;
-        case GLFW_KEY_C:
-            bezierCurve->toggle_continuity_state();
-            break;
-        case GLFW_KEY_2:
-            bezierCurve->Restart(2, this);
-            break;
-        case GLFW_KEY_3:
-            bezierCurve->Restart(3, this);
-            break;
-        case GLFW_KEY_4:
-            bezierCurve->Restart(4, this);
-            break;
-        case GLFW_KEY_5:
-            bezierCurve->Restart(5, this);
-            break;
-        case GLFW_KEY_6:
-            bezierCurve->Restart(6, this);
-            break;
-
-        case GLFW_KEY_R:
-            MoveCamera(0,xTranslate, 1);
-            break;
-        case GLFW_KEY_L:
-            MoveCamera(0,xTranslate, -1);
-            break;
-        case GLFW_KEY_U:
-            MoveCamera(0,yTranslate, 1);
-            break;
-        case GLFW_KEY_D:
-            MoveCamera(0,yTranslate, -1);
-            break;
-        case GLFW_KEY_F:
-            MoveCamera(0,zTranslate, -1);
-            break;
-        case GLFW_KEY_B:
-            MoveCamera(0,zTranslate, 1);
-            break;
-    }
-}
-
-void Game::MouseProccessing(int button) {
-    switch (button){
-        case GLFW_MOUSE_BUTTON_LEFT:
-            bezierCurve->fixCurve();
-            break;
-        case GLFW_MOUSE_BUTTON_RIGHT:
-            bezierCurve->TranslateSelectedPoint(glm::vec3(-xrel/20.0f,yrel/20.0f,0));
-            break;
-
-    }
-}
-
 void Game::Motion()
 {
 	if(isActive)
 	{
+
 	}
 }
 
@@ -145,17 +111,103 @@ Game::~Game(void)
 {
 }
 
-void Game::scrollCallback(double xoffset, double yoffset) {
-//    MoveCamera(0,zTranslate,yoffset * -1);
-    if(yoffset < 0){
-        bezierCurve->moveSelectedControlPointIn();
-    } else {
-        bezierCurve->moveSelectedControlPointOut();
+void Game::RotateRightWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateRightWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
     }
-
 }
 
-void Game::AddBezier1DShape(Shape *bezier_1D_line, int parent) {
-    chainParents.push_back(parent);
-    shapes.push_back(bezier_1D_line);
+void Game::RotateLeftWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateLeftWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
 }
+
+void Game::RotateUpperWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateUpperWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
+}
+
+void Game::RotateDownWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateDownWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
+}
+
+void Game::RotateFrontWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateFrontWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
+}
+
+void Game::RotateBackWall() {
+    float fullAngleToRotate = myCube.angle*myCube.clockwise;
+    float partialAngleToRotate = fullAngleToRotate/144.0f;
+    float currentRotationAngle = 0.0f;
+    while(std::abs(currentRotationAngle)<std::abs(fullAngleToRotate))
+    {
+        myCube.RotateBackWall(partialAngleToRotate);
+        currentRotationAngle = currentRotationAngle + partialAngleToRotate;
+        Draw(1,0,this->BACK,true,false);
+        display->SwapBuffers();
+        display->PollEvents();
+    }
+}
+
+void Game::changeClockwise() {
+    myCube.FlipClockwise();
+}
+
+void Game::Randomizer() {
+    myCube.Randomizer();
+}
+
+void Game::DivideAngle() {
+    myCube.DivideAngle();
+}
+
+void Game::MultiplyAngle() {
+    myCube.MultiplyAngle();
+}
+

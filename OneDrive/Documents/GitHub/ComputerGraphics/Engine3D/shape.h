@@ -8,7 +8,7 @@
 
 class Shape : public MovableGLM
 {
-protected:
+private:
 
 	MeshConstructor *mesh;
 	int texID;
@@ -25,9 +25,7 @@ public:
 	
 	Shape(const int SimpleShapeType,unsigned int mode);
 
-    Shape();
-
-    virtual void Draw( const std::vector<Shader*> shaders, const std::vector<Texture*> textures,bool isPicking);
+	void Draw( const std::vector<Shader*> shaders, const std::vector<Texture*> textures,bool isPicking);
 
 	inline void Hide() {toRender = false;}
 

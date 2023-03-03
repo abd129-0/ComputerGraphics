@@ -1,6 +1,6 @@
 #include "scene.h"
 #include "glad/include/glad/glad.h"
-#include "../Game/block.h"
+#include "../Game/UnitCube.h"
 #include <iostream>
 
 	static void printMat(const glm::mat4 mat)
@@ -49,7 +49,7 @@
 	void Scene::AddShape(int type, int parent,unsigned int mode)
 	{
 		chainParents.push_back(parent);
-		shapes.push_back(new Shape(type,mode));
+		shapes.push_back(new UnitCube(type,mode));
 	}
 
 	void Scene::AddShapeCopy(int indx,int parent,unsigned int mode)
@@ -193,16 +193,15 @@
 		if(pickedShape == -1)
 		{
 			if(button == 1 )
-			{				
-
-				MyTranslate(glm::vec3(-xrel/20.0f,0,0),0);
-				MyTranslate(glm::vec3(0,yrel/20.0f,0),0);
+			{
+				MyTranslate(glm::vec3(-xrel/50.0f,0,0),0);
+				MyTranslate(glm::vec3(0,yrel/50.0f,0),0);
 				WhenTranslate();
 			}
 			else
 			{
-				MyRotate(xrel/2.0f,glm::vec3(0,1,0),0);
-				MyRotate(yrel/2.0f,glm::vec3(1,0,0),0);
+				MyRotate(-xrel/2.0f,glm::vec3(0,1,0),0);
+				MyRotate(-yrel/2.0f,glm::vec3(1,0,0),0);
 				WhenRotate();
 			}
 		}
@@ -264,18 +263,6 @@
 		{
 			delete tex;
 		}
-
-}
-
-int Scene::AddBlock(glm::vec3 pos) {
-    chainParents.push_back(-1);
-    AddTexture("../res/textures/plane.png",false);
-    shapes.push_back(new block(0, pos, Cube, TRIANGLES));
-    SetShapeTex(shapes.size() - 1, textures.size() - 1);
-    return shapes.size() - 1;
-}
-
-void Scene::keyListener(int key) {
 
 }
 

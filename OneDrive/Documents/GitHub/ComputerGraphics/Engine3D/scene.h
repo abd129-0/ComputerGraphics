@@ -5,6 +5,7 @@
 #include "VertexArray.hpp"
 #include <vector>
 
+
 class Scene : public MovableGLM
 {
 
@@ -13,13 +14,12 @@ public:
 	enum transformations{xTranslate, yTranslate, zTranslate, xRotate, yRotate, zRotate, xScale, yScale, zScale, xCameraTranslate, yCameraTranslate, zCameraTranslate};
 	enum modes{POINTS, LINES, LINE_LOOP, LINE_STRIP, TRIANGLES, TRIANGLE_STRIP, TRIANGLE_FAN, QUADS};
 	enum buffers{COLOR, DEPTH, STENCIL, BACK, FRONT, ACCUM, NONE };
-	enum shape{Axis, Plane, Cube, Octahedron, Tethrahedron, LineCopy, MeshCopy};
+	enum shapes{Axis, Plane, Cube, Octahedron, Tethrahedron, LineCopy, MeshCopy};
 	
 	Scene();
 	Scene(float angle,float relationWH,float near, float far);
 	
 	void AddShapeFromFile(const std::string& fileName,int parent,unsigned int mode);
-    int AddBlock(glm::vec3 pos);
 	virtual void AddShape(int type,int parent,unsigned int mode);
 	void AddShapeCopy(int indx,int parent,unsigned int mode);
 	
@@ -55,29 +55,31 @@ public:
 	inline void Deactivate() {isActive = false;}
 	void HideShape(int shpIndx);
 	void UnhideShape(int shpIndx);
-    virtual void keyListener(int key);
+
 	void UpdatePosition(float xpos, float ypos);
-	virtual void MouseProccessing(int button);
+	void MouseProccessing(int button);
 	bool inline IsActive() const { return isActive;} 
 	
-	inline void SetShapeTex(int shpIndx,int texIndx){shapes[shpIndx]->SetTexture(texIndx);}
-	inline void SetShapeShader(int shpIndx,int shdrIndx){shapes[shpIndx]->SetShader(shdrIndx);}
-    std::vector<Shape*> shapes;
+	inline void SetShapeTex(int shpIndx,int texIndx){shapes[shpIndx]->SetTexture(texIndx);} 
+	inline void SetShapeShader(int shpIndx,int shdrIndx){shapes[shpIndx]->SetShader(shdrIndx);} 
+	
+private:	
+	
+	std::vector<Camera*> cameras; 
 
-private:
-
-	std::vector<Camera*> cameras;
-    float depth;
-    int cameraIndx;
+	float depth;
+	int xold, yold,xrel, yrel;
+	int cameraIndx;
 	void Clear(float r, float g, float b, float a);
 
 protected:
-    int xold, yold,xrel, yrel;
-    std::vector<Shader*> shaders;
+	std::vector<Shape*> shapes;
+	std::vector<Shader*> shaders;
 	std::vector<int> chainParents;
 	std::vector<Texture*> textures;
 	
 	int pickedShape;
+	
 	bool isActive;
 };
 
